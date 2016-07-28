@@ -1,0 +1,121 @@
+# Copyright (C) 2011 Klaatu la Terible
+
+# Author: klaatu <klaatu@member.fsf.nospam.org>
+
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this file; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+####### screenwriter-mode for GNU Emacs #######
+
+1. Requirements
+2. Install
+3. Notes
+4. Screenplay-tools
+
+
+1. REQUIREMENTS
+---------------
+A computer running GNU Emacs.
+
+
+2. INSTALL 
+---------- 
+
+There are many ways to install elisp extensions into GNU Emacs.  The
+first way is on a system-wide level, which requires root access to the
+computer.  
+
+The other way is a user-specific method, which anyone can do and will
+automatically be backed up with the rest of your home directory
+whenever you backup or migrate your data.  For that reason, I
+recommend the user-specific method, unless you are a systems
+administrator (in which case you can dump the extension into
+/usr/share/emacs/site-lisp or whatever, but I'll assume you can figure
+that out).
+
+So, for user-based installation:
+
+First, you should create a directory in your home folder for all of your personal Emacs extensions.  You can call this directory whatever you like; some people call it elisp.d, some people .elisp, others .elisp.d, and so on.  It doesn't matter what you call it but I call it elisp so that's what I'll use here.
+
+$ mkdir ~/elisp
+
+Then copy the screenwriter.el file into that directory:
+
+$ cp ./screenwriter.el ~/elisp
+
+Now it's installed.  But wait! we need to configure a few things first.
+
+Create a file in your home directory (in fact it may already exist) called .emacs and then open it in a text editor:
+
+$ touch ~/.emacs
+$ emacs ~/.emacs
+
+In the .emacs file, you should add at least these lines:
+
+(add-to-list 'load-path "~/elisp")
+(require 'screenwriter)
+(global-set-key (kbd "<f5>")   'screenwriter-mode)
+(setq auto-mode-alist (cons '("\\.scp" . screenwriter-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.screenplay" . screenwriter-mode) auto-mode-alist))
+
+Line by line, this means: 
+
+Add your personal elisp directory to the
+path of all instances of Emacs launched by you.  
+Make the screenwriter-mode available to Emacs when you hit M-x.  Load the
+Screenwriter mode when you hit F5 from within Emacs.  
+Set Emacs to start screenwriter-mode whenever you open a file ending in .scp or .screenplay
+
+Save the file, close Emacs, re-launch it, and start writing screenplays.
+
+
+3. NOTES
+--------
+
+Screenwriter-mode is a begrudging fork of screenplay-mode, which is a
+project I believe to be abandoned, as all of my attempts to contact
+its author have failed.  I forked the project only because I wrote a
+very small (but significant) patch to it (adding transition elements),
+and also so that its documentation could be improved and so that new
+users would have someone to contact should they need assistance.
+
+So, all the real work was done by V. L. Simpson (who has thereby
+single-handedly freed me from having to deal with all those nasty
+screenplay authoring applications out there).  I'm just the
+groundskeeper, but I'll do whatever I can to help so feel free to
+contact me should you have issues, questions, or ideas.
+
+
+4. Screenplay-tools
+-------------------
+
+Screenplay-tools is a set of shell scripts that I wrote in order to
+fine-tune the GNU screenwriting process.  They have been optimized for screenplays written with screenwriter-mode.
+
+The shell scripts each serve a unique purpose:
+
+screenplay-build builds a single-document screenplay from each scene file (this assumes that you are writing each scene as an individual file, which is highly recommended).
+
+screenplay-title generates a properly formatted title page for your screenplay.
+
+screenplay-print formats your script for printing and, optionally, prints it out to an your default lpd printer.  If you don't print that way, you may use a third-party text-to-pdf converter and save it as a PDF instead.
+
+screenplay-character extracts character names from the screenplay and generates a report for casting purposes.  It includes optional formatting for org-mode.
+
+screenplay-location extracts location names from the screenplay and generates a report, for location scouting.  It includes optional formatting for org-mode.
+
+screenplay-help is the help script for the toolset; man pages are also included.
+
+There is an install script for the toolset and for the man pages in the screenplay-tools directory.

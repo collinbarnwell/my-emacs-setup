@@ -1,0 +1,42 @@
+# Copyright (C) 2011 Klaatu la Terible
+
+# Author: klaatu <klaatu@member.fsf.nospam.org>
+
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this file; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+# Boston, MA 02111-1307, USA.
+
+
+################# A word on Small Conveniences ######################
+
+# some suggestions for alternate keyboard shortcuts...
+# you can add this block to your ~/.emacs file if you prefer these keybindings
+
+; user keybindings for screenplay elements in case all the TABS get confusing
+(global-set-key (kbd "C-c s") 'screenplay-slugline)
+(global-set-key (kbd "C-c a") 'screenplay-action-block)
+(global-set-key (kbd "C-c d") 'screenplay-dialog-block)
+(global-set-key (kbd "C-c t") 'screenplay-transition)
+
+
+# add this block so that files ending in either .scp or .screenplay 
+# will open in screenwriter-mode automatically
+
+# For your desktop to know to open those files in emacs, of course, you
+# may need to modify the properties of all .scp or .screenplay files and 
+# tell them to open in emacs.
+
+; open any file with a .scp or .screenplay suffix in screenplay-mode
+(setq auto-mode-alist (cons '("\\.scp" . screenplay-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.screenplay" . screenplay-mode) auto-mode-alist))
