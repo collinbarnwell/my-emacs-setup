@@ -60,4 +60,4 @@ projectile-bookmarks.eld
 url/
 
 # emacs-request cookies directory
-request/
+request//plugins/screenwriter-1.6/screenplay-tools/.git
