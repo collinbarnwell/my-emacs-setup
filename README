@@ -1,0 +1,15 @@
+# Clone this repo.
+
+git clone <this repo> .emacs.d
+
+# Clone (or comment out) all the necessary plugin repos.
+
+cd plugins
+
+git clone https://github.com/jaypei/emacs-neotree.git neotree
+
+# Keep trying
+
+emacs --debug-init nofile.txt &
+
+# until it works.
