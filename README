@@ -1,10 +1,10 @@
 # Clone this repo.
 
-git clone <this repo> .emacs.d
+git clone https://github.com/collinbarnwell/my-emacs-setup.git .emacs.d
 
 # Clone (or comment out) all the necessary plugin repos.
 
-cd plugins
+cd ~/.emacs.d/plugins
 
 git clone https://github.com/jaypei/emacs-neotree.git neotree
 
