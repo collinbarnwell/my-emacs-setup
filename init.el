@@ -94,7 +94,7 @@
 (require 'git-find-file)
 (global-set-key (kbd "C-x C-M-f") 'git-find-file)
 
-(shell)
+;; (shell)
 ;; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
 ;;  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
 ;;   (flet ((process-list ())) ad-do-it))
