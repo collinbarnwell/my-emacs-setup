@@ -56,6 +56,19 @@
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
+(setq tags-table-list
+      (delete "" (split-string (shell-command-to-string "ls -d ~/c/*/TAGS"))))
+
+(defun search-tags ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapcar (lambda (x)
+              (push (prin1-to-string x t) tag-names))
+            tags-completion-table)
+    (find-tag (ido-completing-read "Tag: " tag-names))))
+
 ;; Rails
 ;; (require 'flymake-ruby)
 ;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
