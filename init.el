@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (misterioso)))
+ '(custom-enabled-themes (quote (light-blue)))
  '(fill-column 100)
  '(inhibit-startup-screen t))
 (custom-set-faces
@@ -56,18 +56,19 @@
   (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
 (add-hook 'ido-setup-hook 'ido-define-keys)
 
-(setq tags-table-list
-      (delete "" (split-string (shell-command-to-string "ls -d ~/c/*/TAGS"))))
+;; (setq tags-table-list
+      ;; (delete "" (split-string (shell-command-to-string "ls -d ~/c/*/TAGS"))))
 
-(defun search-tags ()
-  "Find a tag using ido"
-  (interactive)
-  (tags-completion-table)
-  (let (tag-names)
-    (mapcar (lambda (x)
-              (push (prin1-to-string x t) tag-names))
-            tags-completion-table)
-    (find-tag (ido-completing-read "Tag: " tag-names))))
+;; (defun search-tags ()
+  ;; "Find a tag using ido"
+  ;; (interactive)
+  ;; (tags-completion-table)
+  ;; (let (tag-names)
+    ;; (mapcar (lambda (x)
+              ;; (push (prin1-to-string x t) tag-names))
+            ;; tags-completion-table)
+    ;; (find-tag (ido-completing-read "Tag: " tag-names))))
+
 
 ;; Rails
 ;; (require 'flymake-ruby)
@@ -125,3 +126,12 @@
 (add-hook 'c++-mode-hook
           (lambda ()
             (add-hook 'before-save-hook #'google-clang-format-file nil :local)))
+
+;; buildifier
+(add-hook 'after-save-hook
+          (lambda()
+            (if (string-match "BUILD" (file-name-base (buffer-file-name)))
+                (progn
+                  (shell-command (concat "buildifier " (buffer-file-name)))
+                  (find-alternate-file (buffer-file-name))))))
+(put 'downcase-region 'disabled nil)
