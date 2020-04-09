@@ -5,7 +5,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (light-blue)))
  '(fill-column 100)
- '(inhibit-startup-screen t))
+ '(inhibit-startup-screen t)
+ '(package-selected-packages
+   (quote
+    (projectile zenburn-theme yasnippet-snippets yaml-mode which-key undo-tree tabbar session rust-mode puppet-mode pod-mode muttrc-mode mutt-alias lv lsp-ui initsplit ido-completing-read+ htmlize graphviz-dot-mode goto-chg gitignore-mode gitconfig-mode gitattributes-mode git-modes folding ess eproject diminish csv-mode company-lsp browse-kill-ring boxquote bm bar-cursor apache-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,8 +108,10 @@
 (global-unset-key (kbd "C-z"))
 
 ;; fuzzy search file
-(require 'git-find-file)
-(global-set-key (kbd "C-x C-M-f") 'git-find-file)
+;; (require 'git-find-file)                           ;; Doesn't work well with submodules
+;; (global-set-key (kbd "C-x C-M-f") 'git-find-file)  ;; Doesn't work well with submodules
+(projectile-mode +1)
+(global-set-key (kbd "C-x C-M-f") 'projectile-command-map)
 
 ;; (shell)
 ;; (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
@@ -135,3 +140,5 @@
                   (shell-command (concat "buildifier " (buffer-file-name)))
                   (find-alternate-file (buffer-file-name))))))
 (put 'downcase-region 'disabled nil)
+
+(server-start)
