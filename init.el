@@ -19,7 +19,7 @@
 ;; Plugins list
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/neotree"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/screenwriter-1.6/"))
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/screenwriter-1.6/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/scss-mode/"))
 
 (require 'neotree)
@@ -141,4 +141,7 @@
                   (find-alternate-file (buffer-file-name))))))
 (put 'downcase-region 'disabled nil)
 
-(server-start)
+(add-hook 'python-mode-hook '(lambda ()
+                               (setq python-indent 2)))
+
+;; (server-start)
