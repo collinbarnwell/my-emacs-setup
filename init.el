@@ -145,3 +145,7 @@
                                (setq python-indent 2)))
 
 ;; (server-start)
+(put 'upcase-region 'disabled nil)
+
+;; GN Mode
+(load "~/.emacs.d/gn-mode")
