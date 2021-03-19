@@ -1,2 +1,5 @@
 [submodule "/plugins/screenwriter-1.6/screenplay-tools"]
 	ignore = dirty
+[submodule "plugins/neotree"]
+	path = plugins/neotree
+	url = https://github.com/jaypei/emacs-neotree.git
