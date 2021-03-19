@@ -13,13 +13,7 @@ rm -rf /tmp/tmp-gopath
 
 # Clone this repo.
 
-git clone https://github.com/collinbarnwell/my-emacs-setup.git .emacs.d
-
-# Clone (or comment out) all the necessary plugin repos.
-
-cd ~/.emacs.d/plugins
-
-git clone https://github.com/jaypei/emacs-neotree.git neotree
+git clone --recurse-submodules https://github.com/collinbarnwell/my-emacs-setup.git .emacs.d
 
 # Keep trying
 
