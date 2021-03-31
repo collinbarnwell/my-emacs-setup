@@ -35,13 +35,14 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; melpa
-(require 'package)
+;; package lists
 (add-to-list 'package-archives
-    '("marmalade" .
-      "http://marmalade-repo.org/packages/"))
+	     '("marmalade" .
+	       "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+    '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '(("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
 ;; ido
@@ -110,6 +111,10 @@
 ;; fuzzy search file
 ;; (require 'git-find-file)                           ;; Doesn't work well with submodules
 ;; (global-set-key (kbd "C-x C-M-f") 'git-find-file)  ;; Doesn't work well with submodules
+
+(unless (package-installed-p 'projectile)
+  (package-install 'projectile))
+
 (projectile-mode +1)
 (global-set-key (kbd "C-x C-M-f") 'projectile-command-map)
 
