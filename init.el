@@ -1,20 +1,15 @@
+(add-hook 'after-init-hook (lambda () (load-theme 'midnight t)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(custom-enabled-themes (quote (light-blue)))
  '(fill-column 100)
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
     (projectile zenburn-theme yasnippet-snippets yaml-mode which-key undo-tree tabbar session rust-mode puppet-mode pod-mode muttrc-mode mutt-alias lv lsp-ui initsplit ido-completing-read+ htmlize graphviz-dot-mode goto-chg gitignore-mode gitconfig-mode gitattributes-mode git-modes folding ess eproject diminish csv-mode company-lsp browse-kill-ring boxquote bm bar-cursor apache-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(scroll-bar ((t (:background "steel blue" :foreground "spring green")))))
 
 ;; Plugins list
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/"))
@@ -22,7 +17,6 @@
 ;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/screenwriter-1.6/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/scss-mode/"))
 
-(load-theme 'midnight)
 
 (require 'neotree)
   (global-set-key [f8] 'neotree-toggle)
