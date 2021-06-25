@@ -3,7 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (light-blue)))
+ ;; '(custom-enabled-themes (quote (light-blue)))
  '(fill-column 100)
  '(inhibit-startup-screen t)
  '(package-selected-packages
@@ -21,6 +21,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/neotree"))
 ;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/screenwriter-1.6/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/plugins/scss-mode/"))
+
+(load-theme 'midnight)
 
 (require 'neotree)
   (global-set-key [f8] 'neotree-toggle)
